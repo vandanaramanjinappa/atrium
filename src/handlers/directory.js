@@ -7,10 +7,10 @@ function listColleagues(db) {
 export function searchDirectory(db, q) {
   const sql =
     "SELECT id, display_name, email, department, role FROM users " +
-    "WHERE display_name LIKE '%" + q + "%' " +
-    "OR department LIKE '%" + q + "%'";
+    "WHERE display_name LIKE ? OR department LIKE ?";
 
-  return db.prepare(sql).all();
+  const term = "%" + q + "%";
+  return db.prepare(sql).all(term, term);
 }
 
 /** GET /directory */

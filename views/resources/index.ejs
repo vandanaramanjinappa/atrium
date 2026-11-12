@@ -11,8 +11,7 @@
     <% resources.forEach(function (item, index) { %>
       <a class="resource-row" href="/resources/<%= item.id %>">
         <span class="resource-number"><%= String(index + 1).padStart(2, '0') %></span>
-        <span class="resource-main"><span class="resource-category"><%= item.category %></span><strong><%= item.title %></strong><span class="resource-description"><%- item.description %></span></span>
-        <span class="resource-open">Open document <span aria-hidden="true">↗</span></span>
+        <span class="resource-main"><span class="resource-category"><%= item.category %></span><strong><%= item.title %></strong><span class="resource-description"><%= item.description %></span>
       </a>
     <% }) %>
   </section>
