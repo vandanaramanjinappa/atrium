@@ -29,6 +29,17 @@ test("searching the directory narrows it to who you asked for", async () => {
   assert.doesNotMatch(rows, /Alice Nolan/, "Alice does not match this search");
 });
 
+test("directory search treats SQL syntax as a literal search term", async () => {
+  const { app } = freshApp();
+  const agent = await signIn(app, ALICE.username, ALICE.password);
+
+  const res = await agent.get("/directory").query({ q: "' OR 1=1 --" });
+  assert.equal(res.status, 200);
+
+  const rows = resultsTable(res.text);
+  assert.doesNotMatch(rows, /Alice Nolan|Bob Keane|Morgan Doyle/);
+});
+
 test("a search that matches nobody says so, rather than failing", async () => {
   const { app } = freshApp();
   const agent = await signIn(app, ALICE.username, ALICE.password);
