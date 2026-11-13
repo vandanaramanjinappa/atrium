@@ -8,12 +8,14 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "start": "node src/server.js",
-    "reset": "node scripts/reset-lab.mjs",
-    "doctor": "node scripts/doctor.mjs",
-    "test": "node --test",
-    "scan": "node scripts/scan.mjs"
-  },
+  "start": "node src/server.js",
+  "reset": "node scripts/reset-lab.mjs",
+  "doctor": "node scripts/doctor.mjs",
+  "test": "node --test",
+  "scan": "node scripts/scan.mjs",
+  "check": "node checks/directory-check.mjs",
+  "check:versions": "node checks/search-versions.mjs"
+},
   "dependencies": {
     "better-sqlite3": "13.0.3",
     "ejs": "6.0.1",
